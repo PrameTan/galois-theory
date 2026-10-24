@@ -518,9 +518,9 @@ sibling=definition
 			f(x) = a (x - \alpha_1) \dotsb (x - \alpha_n).
 		\end{equation*}
 	\end{definition}
-	Note that since $f\in F[x]$, \textit{a fortiori} $a$ is an element of $F$.
 	
-	The next theorem shows that there is always a finite extension of $F$ in which a given polynomial $f$ splits.
+	Note that since $f\in F[x]$, \textit{a fortiori} $a$ is an element of $F$. The next theorem shows that there is always a finite extension of $F$ in which a given polynomial $f$ splits.
+	
 	\begin{theorem}\label{chap3:existence-extension-field}
 		Let $f \in F[x]$ be of degree $n \geq 1$. There is an extension field $K$ of $F$ with $[K : F] \leq n$ such that $K$ contains a root of $f$. Moreover, there is a field $L$ containing $F$ with $[L : F] \leq n!$ such that $f$ splits over $L$.
 	\end{theorem}
@@ -575,9 +575,8 @@ sibling=definition
 		
 		
 		\section{Algebraic Closures}
-		In this section we prove the existence of splitting fields for infinite sets of polynomials. As an illustration of why this should hold, consider the case when the ground field is $\RR$. The fundamental theorem of algebra states that every polynomial over $\RR$ splits in $\CC$, so $\CC$ is a splitting field of all non-constant polynomials over $\RR$. 
 		
-		In fact, every polynomial over $\CC$ splits in $\CC$. This motivates the following definition.
+		In this section we prove the existence of splitting fields for infinite sets of polynomials. As an illustration of why this should hold, consider the case when the ground field is $\RR$. The fundamental theorem of algebra states that every polynomial over $\RR$ splits in $\CC$, so $\CC$ is a splitting field of all non-constant polynomials over $\RR$. In fact, every polynomial over $\CC$ splits in $\CC$. This motivates the following definition.
 		
 		\begin{definition}
 			A field $K$ is \inlinedef{algebraically closed} if every non-constant polynomial $f \in K[x]$ has a root in $K$.
@@ -616,9 +615,10 @@ sibling=definition
 		\end{proof}
 		
 		\begin{example}
-			The field of complex numbers $\CC$ is algebraically closed. This is the fundamental theorem of algebra which has many proofs using either complex analysis, algebraic topology or abstract algebra. 
+			The field of complex numbers $\CC$ is algebraically closed. This is the \textit{fundamental theorem of algebra} which has many proofs using either complex analysis, algebraic topology or abstract algebra. 
 		\end{example}
-		There is a subfield of $\CC$ which is also algebraically closed. That field is $\mathbb{A}$, the set of algebraic elements of $\CC$ over $\QQ$. It is algebraically closed although the proof is postponed until later.
+		
+		There is a proper subfield of $\CC$ which is also algebraically closed. It is the subfield $\mathbb{A}$ of algebraic elements of $\CC$ over $\QQ$. It is algebraically closed although the proof is postponed until later.
 		
 		\begin{theorem}
 			Let $F$ be a field. Then $F$ has an algebraic closure.
@@ -639,7 +639,7 @@ sibling=definition
 			content...
 		\end{proof}
 		
-	\chapter{Separable and Inseparable Extensions}
+	\include{04-separable-inseparable-extensions.tex}
 	
 	\chapter{Fundamental Theorem of Galois Theory}
 	

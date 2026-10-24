@@ -25,9 +25,9 @@ We say that an $F$-homomorphism $\varphi\colon K \to L$ is a homomorphism of fie
 Let $K/F$ be a field extension. Recall that the set $\Aut(K)$ of automorphisms $K \to K$ is a group under function composition. 
 
 \begin{remark}
-	Consider the subset of $\Aut(K)$ consisting of $F$-automorphisms.
+	Consider the subset of $\Aut(K)$ consisting of all $F$-automorphisms.
 	\begin{enumerate}
-		\item The identity map $\id_K$ is \textit{a fortiori} an $F$-automorphism.
+		\item The identity map $\id_K$ is an $F$-automorphism.
 		\item The composition of two $F$-automorphisms is an $F$-automorphism.
 		\item The inverse of an $F$-automorphism is also an $F$-automorphism.
 	\end{enumerate}
@@ -225,7 +225,7 @@ Given a finite extension $K/F$, we have seen that $\Gal(K/F)$ is a finite group 
 	If $G$ is a group and if $K$ is a field, then a \inlinedef{character} of $G$ is a group homomorphism $G \to K^\times$.
 \end{definition}
 
-An $F$-automorphism $\varphi \colon K \to K$ restricted to the set of invertible elements $K^\times = K \setminus \Set{0}$ gives rise to a character $\varphi|_{K^\times} \colon K^\times \to K^\times$. The following lemma is crucial in what follows. The formulation given here is a generalisation by Artin of a previous result by Dedekind.
+An $F$-automorphism $\varphi \colon K \to K$ restricted to the multiplicative group of invertible elements $K^\times = K \setminus \Set{0}$ gives rise to a character $\varphi|_{K^\times} \colon K^\times \to K^\times$. The following lemma, known as Dedekind's lemma, is crucial in what follows. The formulation given here is a generalisation by Artin of a previous result of Dedekind.
 
 \begin{lemma}[Dedekind, Artin]
 	Let $\tau_1, \dotsc, \tau_n$ be distinct characters $G \to K^\times$. Then the $\tau_i$ are linearly independent in the sense that, if $c_i \in K$ are such that for all $g \in G$,
@@ -251,14 +251,14 @@ An $F$-automorphism $\varphi \colon K \to K$ restricted to the set of invertible
 	The coefficient of $\tau_1(g)$ in the sum vanishes, whereas the coefficient of $\tau_2(g)$ is $c_2(\tau_1(h) - \tau_2(h))$ which does not vanish. Hence there is a counterexample to the statement with less than $k$ summands, a contradiction.
 \end{proof}
 
-Dedekind's lemma is used to establish the following bound on the size of $\Gal(K/F)$.
+Dedekind's lemma is used to establish the bound on the order of $\Gal(K/F)$.
 
 \begin{proposition}\label{chap2:finite-galois-grp-less-than-degree}
 	Let $K$ be a finite field extension of $F$. Then $\card{\Gal(K/F)} \leq [K : F]$.
 \end{proposition}
 \begin{proof}
 	Recall that $\Gal(K/F)$ is finite by 
-	\cref{chap2:finite-extension-implies-finite-galois-group}. Let $\Gal(K/F) = \Set{\tau_1, \dotsc, \tau_n}$, and suppose that $[K : F] < n$. Let $\Set{\alpha_1, \dotsc, \alpha_m}$ be an $F$-basis for the extension $K/F$. Consider the matrix
+	\cref{chap2:finite-extension-implies-finite-galois-group}. Let $\Gal(K/F) = \Set{\tau_1, \dotsc, \tau_n}$, and suppose that $[K : F] < n$. Let $\Set{\alpha_1, \dotsc, \alpha_m}$ be an $F$-basis for the extension $K/F$, so that $m = [K : F]$. Consider the matrix
 	\begin{equation*}
 		A = \begin{pmatrix}
 			\tau_1(\alpha_1) & \tau_1(\alpha_2) & \dotsb & \tau_1(\alpha_m) \\
@@ -267,15 +267,13 @@ Dedekind's lemma is used to establish the following bound on the size of $\Gal(K
 			\tau_n(\alpha_1) & \tau_n(\alpha_2) & \dotsb & \tau_n(\alpha_m)
 		\end{pmatrix}.
 	\end{equation*}
-	It satisfies $\rank(A)\leq m < n$, and so the rows of $A$ are linearly dependent. (This is linear algebra: $\rank(A)$ equals the maximum number of linearly independent rows. There are $n$ rows, but $n > \rank(A)$ so these $n$ rows cannot be linearly independent.)
-	
-	Therefore there are $c_i \in K$, not all zero, such that
+	It satisfies $\rank(A)\leq m < n$, and so the rows of $A$ are linearly dependent. Therefore there are scalars $c_i \in K$, not all zero, such that
 	\begin{equation}\label{chap2:ep1}
 		\sum_{i = 1}^n c_i \begin{pmatrix}
 			\tau_i(\alpha_1) & \tau_i(\alpha_2) & \dotsb & \tau_i(\alpha_m)
 		\end{pmatrix} = 0.
 	\end{equation}
-	Reading the element in each entries of the matrix \ref{chap2:ep1}, we obtain the equations
+	Reading the element in each entries of the matrix in (\ref{chap2:ep1}), we obtain the equations
 	\begin{equation*}
 		\textcolor{NavyBlue}{\sum_{i = 1}^n c_i \tau_i(\alpha_j) = 0} \quad\text{for all $j$.}
 	\end{equation*}
@@ -301,7 +299,7 @@ For what kind of extensions does the equality hold? They are those ones whose gr
 			\tau_n(\alpha_1) & \tau_n(\alpha_2) & \dotsb & \tau_n(\alpha_m)
 		\end{pmatrix}.
 	\end{equation*}
-	The rank $\rank(A)$ of $A$ satisfies $\rank(A) \leq n < m$. Hence the columns of $A$ are linearly dependent. After a relabelling, we may suppose that the first $k \leq m$ column vectors of $A$ are minimally linearly dependent. That is, no proper non-empty subset of the first $k$ column vectors is linearly dependent. We can find $c_i \in F$, not all zero, such that
+	The rank $\rank(A)$ of $A$ satisfies $\rank(A) \leq n < m$. Hence the columns of $A$ are linearly dependent. After relabelling, we may suppose that the first $k \leq m$ column vectors of $A$ are minimally linearly dependent, that is, no proper non-empty subset of the first $k$ column vectors is linearly dependent. We can find $c_i \in F$, not all zero, such that
 	\begin{equation} 
 		\sum_{i = 1}^k c_i \begin{pmatrix}
 			\tau_1(\alpha_i) \\
@@ -392,3 +390,5 @@ From the corollary, a simple extension $F(a)/F$ can fail to be Galois in one of 
 We shall explore these two cases in the next chapters.
 
 \section{Examples and Non-examples of Galois Extensions}
+
+\section{Problems}

@@ -1,0 +1,23 @@
+\chapter{Separable and Inseparable Extensions}
+
+\section{Separable Polynomials}
+
+A polynomial $f$ over a field $F$ is said to have a \inlinedef{repeated root} $\alpha \in F$ if $(x - \alpha)^2$ divides $f$. The \inlinedef{multiplicity} of the root $\alpha$ is the exponent of $(x - \alpha)$ in the factorisation of $f$ into irreducibles. Equivalently, a root $\alpha$ of $f$ has multiplicity $m$ if and only if $(x - \alpha)^m$ divides $f$ but $(x - \alpha)^{m + 1}$ does not divide $f$. From this we see that $\alpha$ is a repeated root if and only if its multiplicity is greater than 1.
+
+We now turn to polynomials that has no repeated roots in any splitting field.
+
+\begin{definition}
+	Let $F$ be a field and let $f \in F[x]$ be an irreducible polynomial. We say that $f$ is \inlinedef{separable over $F$} if $f$ has no repeated roots in any splitting field of $f$.
+	
+	More generally, if $g \in F[x]$ is any polynomial, then $g$ is separable over $F$ if every irreducible factors of $g$ is separable over $F$.
+\end{definition}
+
+\begin{example}~
+	\begin{enumerate}
+		\item The polynomial $x^2 - 2$ is separable over $\QQ$. The polynomial $(x- 1)^5$ is also separable over $\QQ$ because the only irreducible factor is $(x - 1)$. In fact, any polynomial over a field of characteristic zero is separable.
+		
+		\item We now consider the finite field $\FF_2$. The polynomial $x^2 + x + 1$ is separable over $\FF_2$.
+		
+		\item Here is an example of a non-separable polynomial. Let $\operatorname{char}(F) = p$ and $a \in F \setminus F^p$.
+	\end{enumerate}
+\end{example}

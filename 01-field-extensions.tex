@@ -5,9 +5,9 @@
 We start with the namesake definition of this chapter.
 
 \begin{definition}
-	Let $F$ and $K$ be fields. If $\iota \colon F \to K$ is a monomorphism of fields, then we say that $K$ is a \inlinedef{field extension} of $F$ or that $K$ is an \inlinedef{extension} of $F$. 
+	Let $F$ and $K$ be fields. If $\iota \colon F \to K$ is a monomorphism of fields, then we say that $K$ is a \inlinedef{field extension} of $F$ or that $K$ is an \inlinedef{extension} of $F$. The field $F$ is said to be the \inlinedef{base field} of the extension.
 \end{definition}
-If $\iota$ is clear from the context, we shall write $K/F$ (read ``$K$ over $F$'') for $K$ a field extension of $F$. Another common notations for $K/F$ are $K : F$ and $K | F$.
+If $\iota$ is clear from the context, we shall write $K/F$ (read ``$K$ over $F$'') for $K$ a field extension of $F$. Another common notations for $K/F$ are $K : F$ and $K | F$. 
 
 Our convention is that a ring homomorphism sends 1 to 1. With this convention, it follows that any homomorphism of fields $F \to K$ is always injective because its kernel is an ideal of $F$, which is then necessarily the zero ideal. Consequently, the image $\iota(F)$ is an isomorphic copy of $F$ inside $K$. Hence, after identifying $F$ with $\iota(F)$, we may regard a field extension $K/F$ as an inclusion of fields $F \subseteq K$.  The following observation, while immediate, is fundamental to Galois theory.
 
@@ -66,6 +66,10 @@ One of the main reason why we are interested in field extensions is that it allo
 		f(a) = (t + (f))^3 - 2 + (f) = t^3 - 2 + (f) = 0.
 	\end{equation*}
 \end{example}
+
+\begin{definition}
+	Finite field extensions of $\QQ$ are called \inlinedef{algebraic number fields}.
+\end{definition}
 
 The above construction can be generalised to any polynomial which we wish to find its roots. This  will be important later. 
 
@@ -156,8 +160,7 @@ A sequence of field extensions $K_n /K_{n-1}, K_{n - 1}/ K_{n - 2}, \dotsc, K_2 
 	Follows from \cref{chap1:tower-law} and induction.
 \end{proof}
 
-We remark that, by the tower law for infinite extensions, any finiteness of sub-extensions of a finite extension. It follows from .
-\begin{corollary}
+\begin{corollary}\label{chap1:subextension-of-finite-extension-is-finite}
 	Let $F \subseteq K \subseteq M$ be field extensions. If $[M : F]$ is finite, then $[K : F]$ and $[M : K]$ are also finite.
 \end{corollary}
 
@@ -240,7 +243,19 @@ Then $\alpha$ is algebraic if and only if $\mathcal{I}_\alpha \neq \Set{0}$. In 
 	The field extension $\RR/\CC$ is algebraic. (Given $z \in \CC$, can you find a polynomial with coefficients in $\RR$ that has $z$ as a root?) The monic polynomial of $i$ over $\RR$ is $x^2 + 1$.
 \end{example}
 
-The monic polynomial depends on the base field.
+Next we consider a special class of algebraic numbers over $\QQ$.	The complex roots of the equation $x^n = 1$ are called the \inlinedef{$n$-th roots of unity}. For example, the second roots of unity are $1$ and $-1$, and the fourth roots of unity are $1, -1, i, -i$. By De Moivre's formula, ant $n$-th root of unity $\omega$ is of the form
+\begin{equation*}
+		e^{i2k\pi/n} = \cos\frac{2\pi k}{n} + i\sin \frac{2\pi k}{n} \quad (k = 0, \dotsc, n- 1).
+\end{equation*}
+Clearly any $n$-th root of unity is algebraic over $\QQ$. More generally, if $r \in \QQ$ is any rational number, then the roots of the polynomial $x^n - r$ are called the $n$-th roots of $r$. If we know one $n$-th root of $r$, says $z^n - r = 0$, then all $n$-th roots of $r$ are
+\begin{equation*}
+		z, \omega z, \omega^2 z, \dotsc, \omega^{n - 1}z
+\end{equation*}
+where $\omega = e^{i 2 \pi/n}$. Note that all of $n$-th roots of $r$ are algebraic over $\QQ$. At this point, we can determine the minimal polynomials of $\omega_n =  e^{i 2 \pi/n}$ over $\QQ$ when $n = 3, 4$. 
+
+If $n = 3$, then $\omega_3 = e^{i 2\pi/3}$ is the root of $x^3 + 1 = (x + 1)(x^2 - x + 1)$. But $\omega_3 - 1 \neq 0$, therefore $\omega_3$ is a root of the quadratic $x^2 - x + 1$. By the rational root theorem, $x^2 - x + 1$ has no rational roots, and so it is irreducible. (This argument only works in degrees 2 and 3.) Hence $\min(\QQ, \omega_3) = x^2 - x + 1$.
+
+If $n = 4$, then $\omega_4 = i$. It satisfies the polynomial $x^2 + 1$ which is irreducible over $\QQ$ by the same argument as above. Hence $\min(\QQ, i) = x^2 + 1$. Note that $\min(\QQ, i) = \min(\RR, i) = x^2 + 1$  but $\min(\CC, i) = x - i$. We see that the minimal polynomial depends on the base field.
 
 \begin{proposition}\label{chap1:algebraic-finite}
 	Let $K/F$ be a field extension, and $\alpha \in K$ an algebraic element.
@@ -251,7 +266,7 @@ The monic polynomial depends on the base field.
 		
 		\item We have $F(\alpha) = F[\alpha]$.
 		
-		\item If $n$ is the degree of the minimal polynomial $ \deg\min(F, \alpha)$, then the elements $1, \alpha, \dotsc, \alpha^{n- 1}$ form a basis for $F(\alpha)$ over $F$. In particular, $[F(\alpha) : F] = n$. 
+		\item If $n = \deg\min(F, \alpha)$, then the elements $1, \alpha, \dotsc, \alpha^{n- 1}$ form a basis for $F(\alpha)$ over $F$. In particular, $[F(\alpha) : F] = n$. 
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -274,6 +289,13 @@ The monic polynomial depends on the base field.
 		\end{equation*}
 		Hence $b = \sum_{i = 0}^{n - 1} c_i \alpha^i$, and so  $1, \alpha, \dotsc, \alpha^{n- 1}$ span $F[\alpha]$, as needed. \qedhere
 	\end{enumerate}
+\end{proof}
+
+\begin{proposition}\label{chap1:subring-of-algebraic-extension-is-field}
+	If $K$ is an algebraic extension of $F$ and if $R$ is a subring of $K$ with $F \subseteq R \subseteq K$, then $R$ is a field.
+\end{proposition}
+\begin{proof}
+	Let $\alpha \neq 0 \in R$. Since $K$ is algebraic over $F$, $\alpha$ is also algebraic over $F$. It follows that $F(\alpha) = F[\alpha] \subseteq R$ by \cref{chap1:algebraic-finite}. This shows that $\alpha^{-1}$ is an element of $R$.
 \end{proof}
 
 \subsection*{Algebraic Elements Generate Algebraic Extensions}
@@ -310,7 +332,9 @@ The following proposition is immediate.
 	\end{equation*}
 	Thus $\alpha$ is a root of the non-zero polynomial $\sum_{i = 0}^n c_i x^i$, implying that $\alpha$ is algebraic over $F$.
 \end{proof}
-The converse of \cref{chap1:finite-implies-algebraic} also holds. 
+
+The converse of \cref{chap1:finite-implies-algebraic} also holds.
+
 \begin{theorem}\label{chap1:algebraic-fin-dim-finite}
 	Let $K$ be a field extension of $F$. If $\alpha_i \in K$ $(1 \leq i \leq n)$ are algebraic over $F$, then $F[\alpha_1, \dotsc, \alpha_n]$ is a finite-dimensional field extension of $F$ with
 	\begin{equation*}
@@ -363,7 +387,7 @@ Let us give another corollary \cref{chap1:finite-implies-algebraic}. It is a sim
 	Follows from \cref{chap1:algebraic-finite} and \cref{chap1:finite-implies-algebraic}.
 \end{proof}
 Using this criterion, we can prove that the property of being an algebraic extension is transitive.
-\begin{theorem}
+\begin{theorem}\label{chap1:algebraic-extensions-are-transitive}
 	Let $F \subseteq L \subseteq K$ be fields. If $L/F$ and $K/L$ are algebraic, then $K/F$ is algebraic.
 \end{theorem}
 \begin{proof}
@@ -374,39 +398,101 @@ Using this criterion, we can prove that the property of being an algebraic exten
 	The field $F(\alpha)$, being a subfield of $F(a_0, \dotsc, a_n, \alpha)$, must also be a finite extension of $F$. Hence $\alpha$ is algebraic by \cref{chap1:element-alg-iff-finite}.
 \end{proof}
 
-\begin{theorem}
-	If $K$ is an algebraic extension of $F$ and if $R$ is a subring of $K$ with $F \subseteq R \subseteq K$, then $R$ is a field.
+\begin{theorem}[Algebraic elements generate an algebraic extension]\label{chap1:field-generated-by-algebraic-elements-is-algebraic}
+	Let $K/F$ be a field extension. Suppose $S \subseteq K$ is a subset such that all elements of $S$ is algebraic over $F$, then the extension $F(S)/F$ is algebraic.
 \end{theorem}
 \begin{proof}
-	Let $\alpha \neq 0 \in R$. Since $K$ is algebraic over $F$, $\alpha$ is also algebraic over $F$. It follows that $F(\alpha) = F[\alpha] \subseteq R$ by \cref{chap1:algebraic-finite}. This shows that $\alpha^{-1}$ is an element of $R$.
+	Let $\alpha \in F(S)$. Hence we may write $\alpha$ as a fraction
+	\begin{equation*}
+		\alpha = \frac{f(a_1, \dotsc, a_n)}{g(a_1, \dotsc, a_n)}
+	\end{equation*}
+	for suitable $n \in \NN$, $a_1, \dotsc, a_n \in S$ and $f, g \in F[x_1, \dotsc, x_n]$ such that $g(a_1, \dotsc, a_n) \neq 0$.  It follows that $\alpha \in F(a_1, \dotsc, a_n) \eqqcolon L$. By assumption, the field $L$ is finitely generated as a field by algebraic elements over $F$, and so $L/F$ is a finite extension by \cref{chap1:algebraic-fin-dim-finite}. Hence $L/F$ is algebraic by \cref{chap1:finite-implies-algebraic}. As a consequence, $\alpha \in L$ is algebraic over $F$.
 \end{proof}
+
+
 
 \section{Composite Field Extensions}
 
 Given two field extensions living inside the same larger field, we may consider the field generated by those extensions.
 
 \begin{definition}
-	Let $F$ be a field, and suppose that $L_1$ and $L_2$ are field extensions of $F$ contained in some common extension $K$ of $F$. The \inlinedef{composite} (or the \inlinedef{compositum}) $L_1L_2$ of $L_1$ and $L_2$ is the subfield of $K$ generated by $L_1$ and $L_2$. That is, $L_1L_2 = L_1(L_2)$ and $L_2(L_1)$.
+	Let $F$ be a field, and suppose that $L_1$ and $L_2$ are field extensions of $F$ contained in some common extension $K$ of $F$. The \inlinedef{composite} (or the \inlinedef{compositum}) $L_1L_2$ of $L_1$ and $L_2$ is the subfield of $K$ generated by $L_1$ and $L_2$.
 \end{definition}
 
-\begin{example}
-	Let $F$ be a field, and let $L_1 = F(a_1, \dotsc, a_n)$, and $L_2 = F(b_1, \dotsc, b_m)$ be field extensions of $F$. Then the composite $L_1L_2$ is equal to $F(a_1, \dotsc, a_n, b_1, \dotsc, b_m)$.
-\end{example}
+\begin{remark}\label{chap1:composite-of-finitely-generated-extension}
+	Let $F$ be a field, and let $L_1 = F(a_1, \dotsc, a_n)$, and $L_2 = F(b_1, \dotsc, b_m)$ be field extensions of $F$. Then the composite $L_1L_2$ is equal to $F(a_1, \dotsc, a_n, b_1, \dotsc, b_m)$. Furthermore $L_1L_2 = L_1(L_2)$ and $L_2(L_1)$.
+\end{remark}
 
 \begin{proposition}
 	Let $F$ be a field, and suppose that $L_1$ and $L_2$ are field extensions of $F$ contained in some common extension $K$ of $F$. Then $L_1L_2$ is a finite extension of $F$ (resp.~algebraic extension of $F$) if and only if both $L_1$ and $L_2$ are finite extensions (resp.~algebraic extensions) of $F$.
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}[wide]
+		\item If $L_1L_2/F$ is a finite extension, then we have a chain of extension $F \subseteq L_1 \subseteq L_1L_2$, and so $L_1/F$ is finite by \cref{chap1:subextension-of-finite-extension-is-finite}. Similarly $L_2/F$ is finite.
+		
+		Conversely, assume that $L_1$ and $L_2$ are finite extensions of $F$. Write $L_1 = F(a_1, \dotsc, a_n)$ and $L_2 = F(b_1, \dotsc, b_m)$, so that $L_1 L_2 = F(a_1, \dotsc, a_n, b_1, \dotsc, b_m)$ by \cref{chap1:composite-of-finitely-generated-extension}. Because the extensions $L_1/F$ and $L_2/F$ are finite, the elements $a_1, \dotsc, a_n, b_1, \dotsc, b_m$ are algebraic (\cref{chap1:finite-implies-algebraic}). Thus $L_1L_2$ is finitely generated as a field over $F$ by algebraic elements, and so it is a finite extension by \cref{chap1:algebraic-fin-dim-finite}.
+		
+		\item If $L_1L_2/F$ is an algebraic extension, then clearly every element of $L_1$ and $L_2$ is algebraic over $F$.	For the converse, suppose that $L_1$ and $L_2$ are algebraic extensions of $F$. By assumption, every element of $L_2$ satisfies a non-zero polynomial $f \in F[x]$. Since $L_1$ contains $F$, this implies that every element of $L_2$ is algebraic over $L_1$.
+		
+		\cref{chap1:composite-of-finitely-generated-extension} says that $L_1L_2 = L_1(L_2)$. Thus $L_1L_2$ is generated as a field by algebraic elements over $L_1$, and so $L_1L_2/L_1$ is algebraic (\cref{chap1:field-generated-by-algebraic-elements-is-algebraic}). Hence $L_1L_2/F$ is algebraic by the transitivity of algebraic extensions (\cref{chap1:algebraic-extensions-are-transitive}). \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Let $K$ be a finite extension of $F$ and let $L_1, L_2$ be subfields of $K$ containing $F$. Then
+	\begin{equation*}
+		[L_1L_2 : F] \leq [L_1 : F][L_2 : F].
+	\end{equation*}
+	Moreover, if $[L_1 : F]$ and $[L_2 : F]$ are coprime, then $[L_1L_2 : F] = [L_1 : F][L_2 : F]$.
+\end{proposition}
+
+We give two proofs of this result. The first proof proceeds by directly constructing a spanning set of $L_1L_2$ from the $F$-bases of $L_1$ and $L_2$. The second one uses the sequence of field extensions.
+
+\begin{proof}[First proof]
+	Since $L_1$, $L_2$ and $L_1L_2$ are subfields of $K$, and $K$ is a finite extension of $F$, all quantities in the proposition are finite. Let $[L_1 : F] = n$ and $[L_2 : F] = m$. Hence there exists an $F$-basis $\Set{a_1, \dotsc, a_n}$ of $L_1$ and an $F$-basis $\Set{b_1, \dotsc, b_m}$ of $L_2$. We claim that
+	\begin{equation*}
+		L_1L_2 = \Span\Set{a_ib_j : 1 \leq i \leq n, 1 \leq j \leq m}
+	\end{equation*}
+	as an $F$-subspace of $K$. Given this it will follow that $[L_1L_2 : F] \leq mn$. Let us denote the subspace on the right hand side by $V$. 
+	
+	It is obvious that $V \subseteq L_1L_2$. The set $V$ is closed under multiplication. To see this, note that for all $1 \leq i, k \leq n$ and $1 \leq j, l \leq m$, we have
+	\begin{equation*}
+		(a_ib_j)(a_kb_l) = (a_i a_k)(b_j b_l).
+	\end{equation*} 
+	Since $a_i a_k \in L_1$, we can rewrite it as a linear combination of $a_1, \dotsc, a_n$. Similarly, $b_j b_l$ is a linear combination of $b_1, \dotsc, b_m$. Multiplying this out gives a linear combination in terms of $a_ib_j$, and so $(a_ib_j)(a_kb_l) \in V$. The fact that products of two arbitrary elements of $V$ are elements of $V$ follows immediately.	
+	
+	In particular, since $1 \in L_1 \cap L_2$, we have $1 \in V$. Therefore $V$ is a subring of $K$. By \cref{chap1:subring-of-algebraic-extension-is-field}, $V$ is actually a subfield of $K$. Now let $a \in L_1$ be any element, and so $a = \sum_{i = 1}^n c_ia_i$ for suitable $c_1, \dotsc, c_n \in F$. Write $1 = \sum_{j = 1}^m d_jb_j$ as a linear combination of $b_1, \dotsc, b_m$. We obtain
+	\begin{equation*}
+		a = a(1) = \sum_{i = 1}^n\sum_{j = 1}^m (c_id_j)(a_i b_j) \in V.
+	\end{equation*}
+	This shows that $L_1 \subseteq V$. A similar argument also shows that $L_2 \subseteq V$. Thus $V$ is a subfield of $K$ containing $L_1$ and $L_2$, and so $L_1L_2 \subseteq V$ by definition. Therefore $V = L_1L_2$ as claimed.
+	
+	For the second statement, note that we have field extensions $F \subseteq L_1 \subseteq L_1L_2$. By the tower law, $[L_1 : F] = n$ divides $[L_1L_2 : F]$. Similarly we see that $[L_2 : F] = m$ divides $[L_1L_2 : F]$. Since $m$ and $n$ are coprime, $mn$ divides $[L_1L_2 : F]$. Therefore $mn \leq [L_1L_2 : F]$. Together with the first part we get $mn = [L_1L_2 : F]$.
+\end{proof}
+
+\begin{proof}[Second proof]
+	content...
+\end{proof}
+
+Two field extensions $L_1/F$ and $L_2/F$ satisfying $[L_1L_2 : F] = [L_1 : F][L_2 : F]$ are said to be \inlinedef{linearly disjoint}.
 
 \section{Problems}
 
 In the following problems, let $K/F$ be a field extension.
 
 \begin{problems}
+	\item Let $X \subseteq K$ be any subset. Show that 
+	\begin{equation*}
+		F(X) = \bigcup_{n \in \NN} \Set{F(a_1, \dotsc, a_i) : a_1, \dotsc, a_n \in X}.
+	\end{equation*}
+	
 	\item Show that $K = F$ if and only if $[K : F] = 1$.
 	
 	\item Show that if $[K : F]$ is prime, then there is no intermediate field $F \subsetneq L \subsetneq K$.
 	
-	\item Suppose $a \in K$ is an element such that $[F(a) : F]$ is odd. Prove that $F(a) = F(a^2)$. Find an example showing that the conclusion can be false if $[F(a) : F]$ is instead even.
+	\item Suppose $\alpha \in K$ is an element such that $[F(\alpha) : F]$ is odd. Prove that $F(\alpha) = F(\alpha^2)$. Find an example showing that the conclusion can be false if $[F(\alpha) : F]$ is instead even.
 	
 	\item Show that $\QQ(\sqrt{2})$ and $\QQ(\sqrt{3})$ are not isomorphic as fields. Nevertheless, they are isomorphic as vector spaces over $\QQ$.
+	
+	\item Suppose $f$ is an irreducible polynomial in $F[x]$ of degree $m > 1$. Let $\alpha \in K$ be an element such that $[F(\alpha) : F] = n$, where $m$ and $n$ are coprime. Show that $f$ has no roots in $F(\alpha)$.
 \end{problems}
