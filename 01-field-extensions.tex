@@ -441,7 +441,7 @@ Using this criterion, we can prove that the property of being an algebraic exten
 	Trivially $A/F$ is algebraic. If $L \subseteq K$ is a subfield with $L/F$ algebraic, then $L \subseteq A$ by construction.
 \end{proof}
 
-The subfield of all algebraic elements of $K$ over $F$ is called the \inlinedef{algebraic closure of $F$ in $K$}. 
+The subfield of $K$ consisting of all algebraic elements over $F$ is called the \inlinedef{algebraic closure of $F$ in $K$}. 
 
 \section{Composite Field Extensions}
 
@@ -478,7 +478,7 @@ Given two field extensions living inside the same larger field, we may consider 
 	Moreover, if $[L_1 : F]$ and $[L_2 : F]$ are coprime, then $[L_1L_2 : F] = [L_1 : F][L_2 : F]$.
 \end{proposition}
 
-We give two proofs of this result. The first proof proceeds by directly constructing a spanning set of $L_1L_2$ from the $F$-bases of $L_1$ and $L_2$. The second one uses sequences of field extensions just as done in \cref{chap1:sequence-of-extensions}.
+We give two proofs of this result. The first proof proceeds by directly constructing a spanning set of $L_1L_2$ from the $F$-bases of $L_1$ and $L_2$. The second one uses sequences of simple field extensions just as in \cref{chap1:sequence-of-extensions}.
 
 \begin{proof}[First proof]
 	Since $L_1$, $L_2$ and $L_1L_2$ are subfields of $K$, and $K$ is a finite extension of $F$, all quantities in the proposition are finite. Let $[L_1 : F] = n$ and $[L_2 : F] = m$. Hence there exists an $F$-basis $\Set{a_1, \dotsc, a_n}$ of $L_1$ and an $F$-basis $\Set{b_1, \dotsc, b_m}$ of $L_2$. We claim that
@@ -499,7 +499,7 @@ We give two proofs of this result. The first proof proceeds by directly construc
 	\end{equation*}
 	This shows that $L_1 \subseteq V$. A similar argument also shows that $L_2 \subseteq V$. Thus $V$ is a subfield of $K$ containing $L_1$ and $L_2$, and so $L_1L_2 \subseteq V$ by definition. Therefore $V = L_1L_2$ as claimed.
 	
-	For the second statement, note that we have field extensions $F \subseteq L_1 \subseteq L_1L_2$. By the tower law, $[L_1 : F] = n$ divides $[L_1L_2 : F]$. Similarly we see that $[L_2 : F] = m$ divides $[L_1L_2 : F]$. Since $m$ and $n$ are coprime, $mn$ divides $[L_1L_2 : F]$. Therefore $mn \leq [L_1L_2 : F]$. Together with the first part we get $mn = [L_1L_2 : F]$.
+	For the second statement, note that we have field extensions $F \subseteq L_1 \subseteq L_1L_2$. By the tower law, $[L_1 : F] = n$ divides $[L_1L_2 : F]$. Similarly, from  $F \subseteq L_2 \subseteq L_1L_2$, we see that $[L_2 : F] = m$ divides $[L_1L_2 : F]$. Since $m$ and $n$ are coprime, $mn$ divides $[L_1L_2 : F]$. Therefore $mn \leq [L_1L_2 : F]$. Together with the first part we get $mn = [L_1L_2 : F]$.
 \end{proof}
 
 \begin{proof}[Second proof]
