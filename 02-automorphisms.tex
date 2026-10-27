@@ -10,7 +10,7 @@ Given a field $F$ with different extensions $K/F$ and $L/F$, we would like to st
 \end{definition}
 
 We say that an $F$-homomorphism $\varphi\colon K \to L$ is a homomorphism of fields which \inlinedef{fixes} the base field $F$. 	
-\begin{remark}
+\begin{remark}\label{chap2:remark-on-F-homomorphisms}
 	\begin{enumerate}
 		\item An $F$-homeomorphism $\varphi \colon K \to L$ is also a linear transformation of $F$-vector spaces. Indeed, for every $\alpha \in F$ and $a \in K$, $\varphi(\alpha a) = \varphi(\alpha)\varphi(a) = \alpha \varphi(a).$
 		
@@ -433,4 +433,15 @@ We finish this chapter with the proof of the fact that every finite group is a G
 	There are, however, infinitely many automorphisms of $\CC$. Apart from the identity map and the complex conjugation, the existence of the other automorphisms of $\CC$ relies on the axiom of choice.
 	
 	\item Let $F \subseteq K$ be an algebraic extension, let $F \subseteq L$ be any extension, and let $\sigma \colon K \to L$ be an $F$-homomorphism of fields. Show that the image $\sigma(K) \subseteq L$ is also an algebraic extension of $F$.
+	
+	\item This exercise provides a proof that if $K/F$ is an algebraic extension and $\tau \colon K \to K$ is an $F$-homomorphism, then $\tau$ is an $F$-automorphism without the assumption that $K/F$ is finite. Note that $\tau$ is injective, so we only need to check that it is surjective. Let $\alpha \in K$. 
+	
+	\begin{problems}
+		\item Let $S = \Set{\alpha_1, \dotsc, \alpha_r}$ be the set of roots of $\min(F, \alpha)$ inside $K$. Show that $F(S)/F$ is a finite extension.
+		
+		\item Show that $\tau(F(S)) \subseteq F(S)$ and $\tau|_{F(S)} \colon F(S) \to F(S)$ is surjective. (Use \cref{chap2:remark-on-F-homomorphisms}.)
+		
+		\item Finish the proof.
+	\end{problems}
+	
 \end{problems}

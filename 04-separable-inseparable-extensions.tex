@@ -1,23 +1,219 @@
 \chapter{Separable and Inseparable Extensions}
 
-\section{Separable Polynomials}
+\section{Separable Polynomials and Separable Extensions}
+
+\subsection*{Separable Polynomials}
 
 A polynomial $f$ over a field $F$ is said to have a \inlinedef{repeated root} $\alpha \in F$ if $(x - \alpha)^2$ divides $f$. The \inlinedef{multiplicity} of the root $\alpha$ is the exponent of $(x - \alpha)$ in the factorisation of $f$ into irreducibles. Equivalently, a root $\alpha$ of $f$ has multiplicity $m$ if and only if $(x - \alpha)^m$ divides $f$ but $(x - \alpha)^{m + 1}$ does not divide $f$. From this we see that $\alpha$ is a repeated root if and only if its multiplicity is greater than 1.
 
 We now turn to polynomials that has no repeated roots in any splitting field.
 
 \begin{definition}
-	Let $F$ be a field and let $f \in F[x]$ be an irreducible polynomial. We say that $f$ is \inlinedef{separable over $F$} if $f$ has no repeated roots in any splitting field of $f$.
+	Let $F$ be a field and let $f \in F[x]$ be an irreducible polynomial. We say that $f$ is \inlinedef{separable over $F$} if $f$ has no repeated roots in a splitting field of $f$. 
 	
 	More generally, if $g \in F[x]$ is any polynomial, then $g$ is separable over $F$ if every irreducible factors of $g$ is separable over $F$.
 \end{definition}
 
+\begin{remark}
+	If $f$ has no repeated roots in a splitting field of $f$, then it has no repeated roots in any splitting field of $f$ because they are all isomorphic and isomorphisms preserve the set of roots of $f$.
+\end{remark}
+
 \begin{example}~
 	\begin{enumerate}
-		\item The polynomial $x^2 - 2$ is separable over $\QQ$. The polynomial $(x- 1)^5$ is also separable over $\QQ$ because the only irreducible factor is $(x - 1)$. In fact, any polynomial over a field of characteristic zero is separable.
+		\item The polynomial $x^2 - 2$ is separable over $\QQ$. The polynomial $(x- 1)^5$ is also separable over $\QQ$ because the only irreducible factor is $(x - 1)$. In fact, any polynomial over a field of characteristic zero is separable. (\cref{chap4:irreducible-polynomial-char-zero-is-separable}.)
 		
 		\item We now consider the finite field $\FF_2$. The polynomial $x^2 + x + 1$ is separable over $\FF_2$.
 		
-		\item Here is an example of a non-separable polynomial. Let $\operatorname{char}(F) = p$ and $a \in F \setminus F^p$.
+		\item Here is an example of a non-separable polynomial. Let $\operatorname{char}(F) = p$ and $a \in F \setminus F^p$. \todo{TODO.}
 	\end{enumerate}
 \end{example}
+
+\begin{lemma}
+	Let $f, g$ be polynomials over a field $F$.
+	
+	\begin{enumerate}
+		\item If $f$ has no repeated roots in any splitting field, then $f$ is separable over $F$.
+		
+		\item If $g$ divides $f$ and $f$ is separable over $F$, then $g$ is separable over $F$.
+		
+		\item If $f_1, \dotsc, f_n$ are separable polynomials over $F$, then the product $f_1 \dotsb f_n$ is separable over $F$.
+		
+		\item If $f$ is separable over $F$, then $f$ is separable over any extension field of $F$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item If an irreducible factor $g$ has a repeated root in a splitting field of $f$, then $f$ has a repeated root.
+		
+		\item If $g$ divides $f$, then an irreducible factors $p$ of $g$ is also an irreducible factor of $F$. By assumption, $p$ has no repeated roots in any splitting field of $p$. Thus $g$ is separable.
+		
+		\item Let $p \in F[x]$ be an irreducible factor of $f_1 \dotsb f_n$. Then $p$ is an irreducible factor of $f_i$ for some $1 \leq i \leq n$. Since $f_i$ is separable, $p$ has no repeated roots in any splitting field of $p$.
+		
+		\item Let $f \in F[x]$ be a separable polynomial and let $K/F$ be a field extension. Suppose $f$ factors into irreducible polynomials $p_1\dotsc p_n$ over $F$. For each $1 \leq i \leq n$, $p_i$ is separable over $F$. We claim that $p_i$ is still separable over $K$. Recall that the splitting field of $p_i$ over $K$ is also the splitting field of $p_i$ over $F$ (\cref{chap3:splitting-field-gives-splitting-field-of-middle}). Since $p_i$ has no repeated root in this splitting field, this proves the claim. Therefore $f$ is separable over $K$ by (3.). \qedhere
+	\end{enumerate}	
+\end{proof}
+
+\subsection*{Formal Derivatives}
+
+To give another way to check separability, we use the concept of polynomial differentiation.
+
+\begin{definition}
+	Let $f = a_0 + a_1 x + \dotsb + a_n x^n \in F[x]$ be a polynomial. The \inlinedef{formal derivative} of  $f$, denoted $f'(x)$, is the polynomial
+	\begin{equation*}
+		f'(x) = a_1 + 2a_2x + \dotsb + na_n x^{n- 1}.
+	\end{equation*}
+\end{definition}
+
+Thus for polynomials over $\CC$ or $\RR$, the formal derivative is equal to the usual derivative.
+
+\begin{lemma}
+	Let $f, g \in F[x]$ be polynomials, and $a, b \in F$. Then
+	\begin{enumerate}
+		\item $(af + bg)' = af' + bg'$.
+		\item $(fg)' = f'g + g'f$.
+		\item $(f(g(x)))' = f'(g(x))g'(x)$.
+	\end{enumerate}
+\end{lemma}
+\begin{exercise}
+	Prove the lemma.
+\end{exercise}
+
+\begin{lemma}\label{chap4:root-is-repeated-iff-is-root-of-deriv}
+	A root $a \in F$ of a polynomial $f \in F[x]$ is a repeated root if and only if $f'(a) = 0$.
+\end{lemma}
+\begin{proof}
+	If $a$ is a root of $f$, then $f(x) = (x - a)g(x)$ for some polynomial $g(x) \in F[x]$. Hence $f'(x) = g(x) + (x - a)g'(x)$. If $f'(a) = 0$, then $g(a) = 0$ and so $x - a$ divides $g$. This implies that $(x - a)^2$ divides $f$. 
+	
+	On the other hand, if $f$ has a repeated root, then $f(x) = (x -a)^2h(x)$ for some polynomial $h(x) \in F[x]$. Then $f'(x) = (x - a)^2h'(x) + 2(x -a)h(x)$, and so $f'(a) = 0$.
+\end{proof}
+
+We need a lemma about relatively prime polynomials. Recall that two polynomials $f, g \in F[x]$ are \inlinedef{relatively prime} if $\gcd(f, g) = 1$, if and only if there are polynomials $p, q \in F[x]$ such that $fp + gq = 1$.
+
+\begin{lemma}\label{chap4:rel-prime-polys-stay-rel-prime}
+	Let $K/F$ be a field extension. Two polynomials $f, g \in F[x]$ are relatively prime in $F[x]$ if and only if they are relatively prime in $K[x]$.
+\end{lemma}
+\begin{proof}
+	First assume that $f, g$ are relatively prime in $F[x]$. Then there are polynomials $p, q \in F[x]$ such that $fp + gq = 1$. This equation still holds in $K[x]$, and so $f, g$ are relatively prime in $K[x]$.
+	
+	Conversely, assume that $f, g$ are relatively prime in $K[x]$. There exist polynomials $a, b \in K[x]$ such that $fa + gb = 1$. Let $d \in F[x]$ be an irreducible factor of $f$ and $g$. Then $d$, viewed as a polynomial in $K[x]$, divides $fa + gb$. Hence $d$ divides $1$. This forces $d = 1$. So there are no non-constant irreducible factors of $f$ and $g$, and thus $f, g$ are relatively prime in $F[x]$.
+\end{proof}
+
+\begin{proposition}\label{chap4:no-rep-roots-if-gcd-is-one}
+	Let $f \in F[x]$ be a non-constant polynomial. Then $f$ has no repeated roots in a splitting field if and only if $\gcd(f, f') = 1$ in $F[x]$.
+\end{proposition}
+\begin{proof}
+	Suppose that $\gcd(f, f') = 1$ in $F[x]$. Let $K$ be a splitting field of $f$ over $F$. Then $\gcd(f, f') = 1$ in $K[x]$ by \cref{chap4:rel-prime-polys-stay-rel-prime}. If $f$ has a repeated root $\alpha \in K$, then $x - \alpha$ divides both $f$ and $f'$ by \cref{chap4:root-is-repeated-iff-is-root-of-deriv}. Hence $x - \alpha$ divides $\gcd(f, f') = 1$, a contradiction.
+	
+	Conversely, assume that $f$ has no repeated roots in a splitting field $K$ of $f$. Let $d(x) \in K[x]$ be an irreducible factor of $f$ and $f'$. Since $f$ splits over $K$, the polynomial $d$ also splits over $K$, and the roots of $d$ are roots of $f$. If $d$ is non-constant, then $d(\alpha) = 0$ for some root $\alpha \in K$ of $f$. But then $f'(\alpha) = 0$ too. Hence $\alpha$ is a repeated root of $f$ by \cref{chap4:root-is-repeated-iff-is-root-of-deriv}, contrary to the assumption. Thus $d$ is constant, and so $\gcd(f, f') = 1$ in $K[x]$. Therefore $\gcd(f, f') = 1$ in $F[x]$ by \cref{chap4:rel-prime-polys-stay-rel-prime}.
+\end{proof}
+
+\begin{lemma}\label{chap4:irreducible-polynomial-char-zero-is-separable}
+	Let $f \in F[x]$ be an irreducible polynomial over a field $F$ of characteristic zero. Then $f$ is separable.	
+\end{lemma}
+\begin{proof}
+	By assumption $\deg f \geq 2$. Since $F$ has characteristic zero, $\deg f' = \deg f - 1 \geq 1$. Since $f$ is irreducible, the only possibility for $\gcd(f, f')$ are either $1$ or $f$. But $\deg f' < \deg f$, and so $f$ cannot divide $f'$. Thus $\gcd(f, f') = 1$ and we have seen that this implies that $f$ has no repeated roots in a splitting field of $f$. (\cref{chap4:no-rep-roots-if-gcd-is-one}.)
+\end{proof}
+
+For fields of positive characteristic, we instead have the following characterisation of separable polynomials.
+
+\begin{lemma}
+	Let $F$ be  field of characteristic $p > 0$. 
+	\begin{enumerate}
+		\item An irreducible polynomial $f \in F[x]$ is separable over $F$ if and only if $f'(x) \neq 0$, if and only if $f(x) \notin F[x^p]$.
+		
+		\item An irreducible polynomial $f \in F[x]$ has the form $g(x^{p^m})$ for some integer $m \geq 0$ and some irreducible polynomial $g(x) \in F[x]$ separable over $F$.
+	\end{enumerate}
+\end{lemma}
+
+\subsection*{Separable Elements and Separable Extensions}
+
+\begin{definition}
+	Let $K$ be an extension field of $F$. An algebraic element $\alpha \in K$ is said to be \inlinedef{separable over $F$} if the minimal polynomial $\min(F, \alpha)$ is separable over $F$. If $K/F$ is algebraic and every elements of $K$ is separable over $F$, we say that $K$ is a \inlinedef{separable extension} of $F$.
+\end{definition}
+
+\begin{remark}
+	If $K/F$ is an algebraic extension of fields of characteristic zero, then $K$ is automatically separable over $F$.
+\end{remark}
+
+\section{Conditions for Galois Extension}
+
+\begin{theorem}\label{chap4:galois-iff-separable-and-normal}
+	Let $K/F$ be an algebraic extension. Then the following are equivalent.
+	\begin{enumerate}
+		\item $K$ is Galois over $F$.
+		
+		\item $K$ is normal and separable over $F$.
+		
+		\item $K$ is a splitting field of a set of separable polynomials over $F$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	(1.) $\implies$ (2.): Suppose $K$ is Galois over $F$. Let $\alpha \in K$. Let $\Set{\alpha_1, \dotsc, \alpha_n}$ be the orbit of $\alpha$ under the action of $\Gal(K/F)$ such that the $\alpha_i$ are distinct. The orbit set is finite because each $\tau \in \Gal(K/F)$ must permute $\alpha$ among the roots of $\min(F, \alpha)$. Define
+	\begin{equation*}
+		f = \prod_{i = 1}^n (x - \alpha_i).
+	\end{equation*}
+	For each $\tau \in \Gal(K/F)$, it is clear that $\tau(f) = f$ because $\tau$ permute the $\alpha_i$. Hence the coefficients of $f$ lies in the fixed field $\mathcal{F}(\Gal(K/F))$, which is the field $F$ because $K$ is Galois over $F$. Therefore $f \in F[x]$.
+	
+	In $F[x]$, we must have $\min(F, \alpha)$ divides $f$. This means that $\min(F, \alpha)$ splits over $K$ and has no repeated roots. Since this holds for any $\alpha \in K$, we see that $K$ is the splitting field of the set $\Set{\min(F, \alpha) : \alpha \in K}$ of polynomials in $F[x]$ separable over $F$. Hence $K$ is normal and separable over $F$.
+	
+	(2.) $\implies$ (3.): If $K$ is normal over $F$, then it is the splitting field of the set 
+	$\Set{\min(F, \alpha) : \alpha \in K}$. If $K$ is furthermore separable, then each $\min(F, \alpha)$ is separable over $F$.
+	
+	(3.) $\implies$ (1.): We first prove this result for finite extensions via induction on the degree of extensions. If $[K : F] = 1$, then $K = F$ which is trivially Galois over $F$. Now suppose that the result holds for extensions of degree less than $n$. Let $K/F$ be an extension of degree $n$ such that $K$ is a splitting field of a set $\Set{f_i(x)}_{ i \in I}$, where each $f_i$ is separable over $F$. Since $[K : F] > 1$, there is a root $\alpha \in K$ of one of the $f_i$ with $\alpha \notin F$.
+	
+	Let $L = F(\alpha)$. Then $[L : F] > 1$, and so $[K : L] < n$. Note that $K$ is again a spitting field of the set $\Set{f_i(x)}_{ i \in I}$ which consists of separable polynomials over $L$. By induction, $K$ is Galois over $L$. Let $H = \Gal(K/L)$. This is a subgroup of $\Gal(K/F) \eqqcolon G$. Let $\alpha_1, \dotsc, \alpha_r$ be the distinct roots of $\min(F,\alpha)$. Then since $\alpha$ is separable over $F$, this implies $[L : F] = r$. By the isomorphism extension theorem, there are $\tau_i \in\Gal(K/F)$ with $\tau_i(\alpha) = \alpha_i$.
+	
+	We claim that the cosets $\tau_i H$ are distinct. This is because if $\tau_i H = \tau_j H$, then $\tau_i^{-1}\tau_j \in H = \Gal(K/L)$, and so $\tau_i^{-1}\tau_j(\alpha) = \alpha$. Hence $\alpha_i = \tau_i(\alpha) = \tau_j(\alpha) =\alpha_j$. Lagrange's theorem implies that
+	\begin{equation*}
+		\abs{G} = [G : H]\cdot \abs{H} \geq r \abs{H} = [L : F][K : L] = [K : F].
+	\end{equation*}
+	By \cref{chap2:finite-galois-grp-less-than-degree}, $\abs{G} \leq [K : F]$. Together we must have $\abs{G} = [K : F]$, and so $K/F$ is Galois by \cref{chap2:finite-extension-galois-iff-equality}.
+	
+	We now turn to infinite extensions. Suppose $K$ is a splitting field of a set $S$ of separable polynomials over $F$. Let $X$ be the set of roots of all the polynomials in $S$. By assumption, $K = F(X)$. Let $a \in \mathcal{F}(\Gal(K/F))$; we need to show that $a \in F$. Then there is a finite subset $\Set{\alpha_1, \dotsc, \alpha_n} \subseteq X$ such that $a \in F(\alpha_1, \dotsc, \alpha_n)$. Let $L \subseteq X$ be the splitting field of $\Set{\min(F, \alpha_i) : i = 1, \dotsc, n}$. Hence $L$ is a finite extension over $F$ which is a splitting field of separable polynomials $\min(F, \alpha_i)$ over $F$. Thus we are in the finite case, and so $L$ is a Galois extension of $F$. Note that $a \in L$.
+	
+	We can apply the isomorphism extension theorem to extend each element $\sigma \in \Gal(L, F)$ to an $F$-automorphism $\tilde{\sigma}$ of $K$ such that $\tilde{\sigma}|_L = \sigma$. On the other hand, since $L$ is normal over $F$, if $\tau \colon K \to K$ is an $F$-automorphism, then $\tau|_L$ is an $F$-automorphism of $L$. (This is a consequence of \cref{chap3:equivalent-normal}.) This implies that
+	\begin{equation*}
+		\Gal(L/F) = \Set*{\tau|_L : \tau \in \Gal(K/F)}.
+	\end{equation*}
+	Therefore $a$, being fixed by $\Gal(K/F)$, is also fixed by $\Gal(L/F)$. But the fixed field of $\Gal(L/F)$ is $F$ because $L/F$ is Galois. This proves that $a \in F$. Hence $K/F$ is Galois.
+\end{proof}
+
+\begin{corollary}
+	Let $L$ be an algebraic extension of $F$.
+	
+	\begin{enumerate}
+		\item $L$ is separable over $F$ if and only if $L$ is contained in a Galois extension of $F$.
+		
+		\item If $L = F(\alpha_1, \dotsc, \alpha_n)$ with $\alpha_1, \dotsc, \alpha_n$ separable over $F$, then $L$ is separable over $F$.
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	\begin{enumerate}
+		\item If $L \subseteq K$ where $K$ is Galois over $F$, then $K$ is separable by \cref{chap4:galois-iff-separable-and-normal}. Hence $L/F$ is also separable. Conversely, let $L$ be separable over $F$. Then $L$ is generated as a field over $F$ by some subset $A \subseteq L$ of separable elements. Set $S = \Set{\min(F, a) : a \in A}$ and let $K$ be a splitting field of $S$ over $F$. Note that $\min(F, a)$ is separable over $F$ for all $a \in A$. Therefore $L \subseteq K$ and so $K/F$ is Galois by \cref{chap4:galois-iff-separable-and-normal}.
+		
+		\item Let $K$ be the splitting field of the set $S = \Set{\min(F, \alpha_i) : i = 1, \dotsc, n}$. By hypothesis, $\min(F,\alpha_i)$ are all separable over $F$. Thus $K/F$ is Galois by \cref{chap4:galois-iff-separable-and-normal}. Note that $L \subseteq K$, and so $L$ is separable over $F$ by (1.). \qedhere 
+	\end{enumerate}
+\end{proof}
+
+\section{Perfect Fields}
+
+\begin{definition}
+	A field $F$ is \inlinedef{perfect} if every algebraic extension of $F$ is separable.
+\end{definition}
+\begin{remark}
+	Every field of characteristic zero is perfect.
+\end{remark}
+
+\section{Purely Inseparable Extensions}
+
+\section{Problems}
+\begin{problems}
+	\item Suppose $K$ is an algebraically closed field.
+	\begin{problems}
+		\item Let $f, g \in K[x]$ be polynomials. Prove that $f$ and $g$ are relatively prime in $K[x]$ if and only if they have no common roots.
+		
+		\item Now let $F$ be a field. Prove that two polynomials $f, g \in F[x]$ are relatively prime in $F[x]$ if and only if they have no common roots in an algebraic closure $\bar{F}$ of $F$.
+	\end{problems}
+\end{problems}

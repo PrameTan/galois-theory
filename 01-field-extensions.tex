@@ -168,6 +168,10 @@ A sequence of field extensions $K_n /K_{n-1}, K_{n - 1}/ K_{n - 2}, \dotsc, K_2 
 	Let $F \subseteq K \subseteq M$ be field extensions. If $[M : F]$ is finite, then $[K : F]$ and $[M : K]$ are also finite.
 \end{corollary}
 
+\begin{example}
+	The rational function field $k(x)$ over a field $k$ is not a finite extension. This follows from the fact that the set $\Set{x^n : n \in \NN}$ is linearly independent over $k$.
+\end{example}
+
 \section{Generating a Field}
 \begin{definition}
 	Let $K/F$ be a field extension and suppose that $S \subseteq K$ is any subset. 
@@ -208,6 +212,8 @@ In the case where $S = \Set{a_1, \dotsc, a_n}$ is given by finitely many element
 \begin{example}
 	The field extension $\CC/\RR$ is simple with the imaginary unit $i$ serving as a primitive element. Note that other choices of a primitive element is possible. In fact, every complex number $z$ with $\operatorname{Re}(z) \neq 0$ is a primitive element of this extension.
 \end{example}
+
+The following example is sometimes useful in reducing a question about finite extensions into a question about simple extensions.
 
 \begin{remark}\label{chap1:sequence-of-extensions}
 	Let $K = F(a_1, \dotsc, a_n)$ be a finite field extension of $F$. Then we can construct a tower of field extensions by successively adjoining $a_i$ to $F$ as follows. 
@@ -349,7 +355,7 @@ The following proposition is immediate.
 	If $K/F$ is a finite extension, then $K$ is algebraic and finitely generated over $F$ as a field.
 \end{lemma}
 \begin{proof}
-	Suppose $\Set{a_1, \dotsc, a_n}$ is a basis for $K$ over $F$. The above proposition implies that $K$ is finitely generated over $F$ as a field.  Let $\alpha \in K$. The set $\Set{1, \alpha, \dotsc, \alpha^n}$ is linearly dependent because its cardinality exceeds $n$. Hence we may find $c_0, \dotsc, c_n \in F$, not all zero, such that
+	Suppose $\Set{a_1, \dotsc, a_n}$ is a basis for $K$ over $F$. The above proposition implies that $K$ is finitely generated over $F$ as a field.  Let $\alpha \in K$. The list of (not necessarily distinct) elements $1, \alpha, \dotsc, \alpha^n$ is linearly dependent over $F$, otherwise $[K : F] > n$. Hence we may find $c_0, \dotsc, c_n \in F$, not all zero, such that
 	\begin{equation*}
 		\sum_{i = 0}^n c_i \alpha^i = 0.
 	\end{equation*}
@@ -555,5 +561,9 @@ In the following problems, let $K/F$ be a field extension.
 	
 	\item Suppose $f$ is an irreducible polynomial in $F[x]$ of degree $m > 1$. Let $\alpha \in K$ be an element such that $[F(\alpha) : F] = n$, where $m$ and $n$ are coprime. Show that $f$ has no roots in $F(\alpha)$.
 	
-	\item Let $\mathbb{A}$ be the algebraic closure of $\QQ$ in $\CC$. Prove that $[\mathbb{A} : \QQ]$ is infinite. 
+	\item Let $\mathbb{A}$ be the algebraic closure of $\QQ$ in $\CC$. Prove that $[\mathbb{A} : \QQ]$ is infinite. Thus an algebraic extension need not be finite.
+	
+	\item Let $K/F$ be an algebraic extension of fields. Then the cardinality $\abs{K}$ of $K$ is at most $\max(\aleph_0,\abs{F})$.
+	
+	\item Give an example showing that a field extension $K/F$, with $K$ finitely generated over $F$ as a field, is not necessarily a finite extension.
 \end{problems}
