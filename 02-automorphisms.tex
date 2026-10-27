@@ -1,6 +1,6 @@
 \chapter{Galois Groups}
 
-\section{Automorphisms}
+\section{Automorphisms and the Galois Group}
 Given a field $F$ with different extensions $K/F$ and $L/F$, we would like to study homomorphisms between $K$ and $L$ which also ``preserve'' the data of them being field extensions of $L$. At the very least, the restriction of such homomorphism to $F$ should be an identity map. This leads to the following definition.
 
 \begin{definition}
@@ -20,17 +20,18 @@ We say that an $F$-homomorphism $\varphi\colon K \to L$ is a homomorphism of fie
 	\end{enumerate}
 \end{remark}
 
-\section{Galois Groups}
+\subsection*{Galois Groups}
 
 Let $K/F$ be a field extension. Recall that the set $\Aut(K)$ of automorphisms $K \to K$ is a group under function composition. 
 
 \begin{remark}
-	Consider the subset of $\Aut(K)$ consisting of all $F$-automorphisms.
+	Consider the subset of $\Aut(K)$ consisting of all $F$-automorphisms. 
 	\begin{enumerate}
 		\item The identity map $\id_K$ is an $F$-automorphism.
 		\item The composition of two $F$-automorphisms is an $F$-automorphism.
 		\item The inverse of an $F$-automorphism is also an $F$-automorphism.
 	\end{enumerate}
+	Therefore this subset is a subgroup of $\Aut(K)$.
 \end{remark} 
 \begin{exercise}
 	Prove the remark.
@@ -41,7 +42,7 @@ Hence we have identified a subgroup of $\Aut(K)$ which we extract into the follo
 	Let $K/F$ be a field extension. We denote by $\Gal(K/F)$ the group of $F$-automorphisms of $K$, and call it the \inlinedef{Galois group} of the extension.
 \end{definition}
 
-For a linear transformation $f \colon V \to W$, the map $f$ is completely determined by how it acts on the basis of $V$. An $F$-automorphism $\tau \in \Gal(K/F)$ also enjoys the same property.
+For a linear transformation $f \colon V \to W$ between vector spaces, the map $f$ is completely determined by how it acts on the basis of $V$. An $F$-automorphism $\tau \in \Gal(K/F)$ also enjoys the same property.
 
 \begin{proposition}\label{chap2:automorphism-depends-on-generating-set}
 	Let $K/F$ be a field extension with $K = F(X)$, so that $X$ is a generating set of the extension. If $\tau, \sigma \in \Gal(K/F)$ are such that $\tau|_{X} = \sigma|_{X}$, then $\tau = \sigma$.
@@ -133,7 +134,13 @@ In the previous section, we construct the Galois group from a field extension. L
 	\end{equation*}
 \end{definition}
 
-The verification that $\mathcal{F}(S)$ is indeed a field as its name suggests is straightforward. Just like taking Galois groups of subfields, the operation of taking fixed fields reverses inclusion.
+Another notation for the fixed field $\mathcal{F}(S) \subseteq K$ of $S$ is $K^S$. The verification that $\mathcal{F}(S)$ is indeed a field as its name suggests is straightforward.
+
+\begin{exercise}
+	Prove that if $K/F$ is an extension and $S \subseteq \Aut(K)$, then $\mathcal{F}(S)$ is a subfield of $K$.
+\end{exercise}
+
+Just like taking Galois groups of subfields, the operation of taking fixed fields reverses inclusion.
 
 \begin{lemma}\label{chap2:subsets-of-autk-fixed-field}
 	If $S_1 \subseteq S_2$ are subsets of $\Aut(K)$, then $\mathcal{F}(S_2) \subseteq \mathcal{F}(S_1)$.
@@ -296,7 +303,7 @@ Dedekind's lemma is used to establish the following inequality.
 \end{proof}
 
 For what kind of extensions does the equality hold? They are those ones whose base field is precisely the fixed field of their Galois group, as the next proposition shows.
-\begin{proposition}\label{chap2:fixed-field-degree-equal-order}
+\begin{proposition}[Artin]\label{chap2:fixed-field-degree-equal-order}
 	Let $G$ be a finite group of automorphisms of $K$ with $F = \mathcal{F}(G)$. Then $\card{G} = [K : F]$, and so $G = \Gal(K/F)$.
 \end{proposition}
 \begin{proof}
@@ -425,4 +432,5 @@ We finish this chapter with the proof of the fact that every finite group is a G
 	
 	There are, however, infinitely many automorphisms of $\CC$. Apart from the identity map and the complex conjugation, the existence of the other automorphisms of $\CC$ relies on the axiom of choice.
 	
+	\item Let $F \subseteq K$ be an algebraic extension, let $F \subseteq L$ be any extension, and let $\sigma \colon K \to L$ be an $F$-homomorphism of fields. Show that the image $\sigma(K) \subseteq L$ is also an algebraic extension of $F$.
 \end{problems}
